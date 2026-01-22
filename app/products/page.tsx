@@ -1,20 +1,19 @@
-import Link from "next/link";
-
-interface IProps{
+import Link from "next/link"
 
 
+async function getProducts(){
+    const data = await fetch('https://dummyjson.com/products')
+    const products = await data.json()
+    return products
 }
 
-
-const ProductsPage = ({}: IProps ) => {
+const ProductsPage = async () => {
+     const {products} = await getProducts()
+     console.log(products);
     return (
-        <div>
-            {Array.from({length:10},(_,idx) =>(
-                <h3 key={idx}>
-                     <Link href={`/products/${idx+1}`}> Product ID - {idx + 1}</Link>
-                     </h3>
-            ))}
-        </div>
+            <div>
+              {products.map((product:{id:number , title:string}, idx:number) => <Link className="block" href={`/products/${product.id}`} key={idx}>{product.title}</Link>)}
+            </div>
     );
 }
 
