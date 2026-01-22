@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface IProps{
 params: {
     id: number;
@@ -17,7 +19,8 @@ async function getProducts(id:number){
         <>
         <h3>Product ID - {id} </h3>
         <h1> {title} </h1>
-        <img src={thumbnail} alt={title} />
+        <Image src={thumbnail} alt={title} width={500} height={500} />
+        {/* <img src={thumbnail} alt={title} /> */}
         </>
     );
 }
