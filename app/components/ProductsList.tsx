@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 async function getProducts() {
-    const data = await fetch('https://dummyjson.com/products')
+    const data = await fetch('http://localhost:3000/api/products')
     const products = await data.json()
     return products
 }
