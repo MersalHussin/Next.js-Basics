@@ -1,3 +1,4 @@
+import { error } from "console";
 import Image from "next/image";
 
 interface IProps{
@@ -14,7 +15,8 @@ async function getProducts(id:number){
  const page = async ({ params }: IProps ) => {
      const {id} = await params
      const {title , thumbnail } = await getProducts(id)
-    //  console.log(id);
+     //  console.log(id);
+     throw new Error("Somthing Erro")
     return (
         <>
         <h3>Product ID - {id} </h3>
