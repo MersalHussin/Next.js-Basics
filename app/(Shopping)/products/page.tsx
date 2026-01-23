@@ -1,19 +1,15 @@
-import Link from "next/link"
+import ProductSkeleton from "@/app/components/ProductSkeleton"
+import ProductsList from "@/app/components/ProductsList"
+import { Suspense } from "react"
 
-
-async function getProducts(){
-    const data = await fetch('https://dummyjson.com/products')
-    const products = await data.json()
-    return products
-}
-
-const ProductsPage = async () => {
-     const {products} = await getProducts()
-     console.log(products);
+const ProductsPage = () => {
     return (
-            <div>
-              {products.map((product:{id:number , title:string}, idx:number) => <Link className="block" href={`/products/${product.id}`} key={idx}>{product.title}</Link>)}
-            </div>
+        <div>
+            <h1 className="font-bold text-3xl mb-5">Our Latest Products</h1>
+            <Suspense fallback={<ProductSkeleton />}>
+                <ProductsList />
+            </Suspense>
+        </div>
     );
 }
 
