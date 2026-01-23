@@ -1,3 +1,4 @@
+import Button from "@/app/components/Button";
 import { error } from "console";
 import Image from "next/image";
 
@@ -21,6 +22,7 @@ async function getProducts(id:number){
         <h3>Product ID - {id} </h3>
         <h1> {title} </h1>
         <Image src={thumbnail} alt={title} width={500} height={500} />
+        <Button text="add to card" onClick={() => console.log("Clicked")}/>
         {/* <img src={thumbnail} alt={title} /> */}
         </>
     );
