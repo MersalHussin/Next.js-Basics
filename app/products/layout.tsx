@@ -1,10 +1,15 @@
 // import React from 'react';
 
-const ProudctsLayout = () => {
+import { ReactNode } from "react";
+
+const ProudctsLayout = ({children}: {children: ReactNode}) => {
     return (
-        <h1>
-        <h1>Products List Layout</h1>
-        </h1>
+        <div className="flex gap-20">
+            <h1>Products List Layout</h1>
+            <div>
+                {children}
+            </div>
+        </div>
     );
 }
 
