@@ -40,12 +40,15 @@ params: {
 
     const page = async ({ params }: IProps ) => {
     const {id} = await params
-     //  console.log(id);
+    
+    // جلب البيانات مرة واحدة
+    const product = await fetch(`https://dummyjson.com/products/${id}`).then(res => res.json())
+    
     return (
         <>
         <h3>Product ID - {id} </h3>
         <Suspense fallback={<ProductDetailsSkeleton />}>
-            <ProductDetails id={id} />
+            <ProductDetails product={product} />
         </Suspense>
         </>
     );

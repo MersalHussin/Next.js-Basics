@@ -1,21 +1,20 @@
 import Link from "next/link";
 
-async function getProducts() {
-    const data = await fetch('http://localhost:3000/api/products')
-    const products = await data.json()
-    return products
+interface IProps {
+    products: Array<{ id: number, title: string }>;
 }
 
-const ProductsList = async () => {
-    const { products } = await getProducts()
-    
+const ProductsList = ({ products }: IProps) => {
     return (
         <>
-            {products.map((product: { id: number, title: string }, idx: number) => 
-                <Link className="block" href={`/products/${product.id}`} key={idx}>
+            {products.map((product: { id: number, title: string }, idx: number) => (
+            <li key={idx}>
+
+                <Link className="block" href={`/products/${product.id}`}>
                     {product.title}
                 </Link>
-            )}
+            </li>
+))}
         </>
     );
 }
